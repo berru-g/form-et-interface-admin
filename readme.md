@@ -7,6 +7,7 @@
         - ✅ 6 input de renseignement (mail, nom, statut, siteweb, numéro, message)
         - ✅ redirection client
         - ✅ enregistrement dans bdd SQL
+        - ⚠️ n'envoie pas les info sur mail client directement
 
 
 ## Interface admin
