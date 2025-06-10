@@ -29,7 +29,7 @@ document.getElementById("contactForm")?.addEventListener('submit', async (e) => 
     fullname: getValue("fullname"),
     statut: getValue("statut"),
     telephone: getValue("telephone"),
-    siteweb: getValue("siteweb"),
+    budget: getValue("budget"),
     message: getValue("message")
   }
 

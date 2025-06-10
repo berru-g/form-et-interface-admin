@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS golden_dessert CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS berru_template CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 -- supabase c'est de la merde on reviens sur sql et php
-USE golden_dessert;
+USE berru_template;
 
 CREATE TABLE contacts (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -8,7 +8,7 @@ CREATE TABLE contacts (
     fullname VARCHAR(255) NOT NULL,
     statut VARCHAR(50),
     telephone VARCHAR(20),
-    siteweb VARCHAR(255),
+    budget VARCHAR(20),
     message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

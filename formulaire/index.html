@@ -8,7 +8,7 @@
 </head>
 <body>
     <form id="contactForm" action="submit.php" method="POST">
-        <img src="../golden-dessert-logo.png" alt="Logo Golden Dessert" />
+        <img src="../logo.png" alt="Logo" />
         <h2>Contactez-nous</h2>
         <p style="text-align: center; color:white;">Et recevez le catalogue automatiquement.</p>
 
@@ -20,16 +20,16 @@
 
         <label for="statut">Vous êtes :</label>
         <select name="statut" id="statut" required>
-            <option value="">-- Choisissez une option --</option>
-            <option value="restaurateur">Restaurateur</option>
-            <option value="fournisseur">Fournisseur</option>
+            <option value="">-- je veux un site... --</option>
+            <option value="restaurateur">Statique</option>
+            <option value="fournisseur">Dynamique</option>
         </select>
 
         <label for="telephone">Téléphone</label>
         <input type="tel" name="telephone" id="telephone" placeholder="07 01 02 03 04" />
 
-        <label for="siteweb">Site Internet</label>
-        <input type="url" name="siteweb" id="siteweb" placeholder="www.votresiteweb.fr" />
+        <label for="budget">Budget</label>
+        <input type="budget" name="budget" id="budget" placeholder="500 €" />
 
         <label for="message">Message</label>
         <textarea name="message" id="message" rows="5" placeholder="Votre message" required></textarea>

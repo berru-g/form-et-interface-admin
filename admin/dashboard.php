@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 }
 
 $host = 'localhost';
-$db = 'golden_dessert';
+$db = 'berru_template';
 $user = 'root';
 $pass = 'root'; // ou ton mot de passe MySQL O2Switch
 $charset = 'utf8mb4';
@@ -34,7 +34,8 @@ try {
 </head>
 <body>
     <h2>
-        📬 Dashboard Admin 
+        <i class="fas fa-inbox"></i>
+        Dashboard Admin 
         <a class="logout-btn" href="logout.php">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </a>
@@ -54,7 +55,7 @@ try {
                 <th data-column="2">Email</th>
                 <th data-column="3">Statut</th>
                 <th data-column="4">Téléphone</th>
-                <th data-column="5">Site web</th>
+                <th data-column="5">budget</th>
                 <th data-column="6">Message</th>
             </tr>
         </thead>
@@ -71,12 +72,7 @@ try {
                 </td>
                 <td><?= htmlspecialchars($msg['statut']) ?></td>
                 <td><?= htmlspecialchars($msg['telephone']) ?></td>
-                <td>
-                   <a href="<?= htmlspecialchars($msg['siteweb']) ?>" class="email-link" rel="noopener"
-                target="_blank">
-                    <?= htmlspecialchars($msg['siteweb']) ?>
-                   </a>
-                </td>
+                <td><?= htmlspecialchars($msg['budget']) ?></td>
                 <td><?= nl2br(htmlspecialchars($msg['message'])) ?></td>
             </tr>
             <?php endforeach; ?>
