@@ -40,6 +40,99 @@ h2 {
     align-items: center;
 }
 
+/* Style de base pour le bouton menu */
+.inbox-icon {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+}
+
+.inbox-icon:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+/* Override SweetAlert2 */
+.custom-swal-popup {
+    border-radius: 12px !important;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2) !important;
+    width: 300px !important;
+    padding: 20px !important;
+    border: 1px solid #878787;
+    box-shadow: -8px 7px 0px -1px #878787;
+}
+
+.custom-swal-close-button {
+    color: #999 !important;
+    font-size: 24px !important;
+    transition: color 0.3s !important;
+}
+
+.custom-swal-close-button:hover {
+    color: var(--error-color) !important;
+}
+
+.custom-swal-content {
+    padding: 0 !important;
+    margin-top: 15px !important;
+}
+
+.custom-swal-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-swal-content li {
+    margin-bottom: 10px;
+}
+
+.custom-swal-content a {
+    display: block;
+    padding: 12px 20px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: 1px solid #eee;
+}
+
+.custom-swal-content a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
+}
+
+/* Titre du menu */
+.swal2-title a {
+    color: var(--blue-color) !important;
+    text-decoration: none !important;
+    transition: color 0.3s;
+}
+
+.swal2-title a:hover {
+    color: var(--secondary-color) !important;
+}
+
+.custom-swal-content li i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.custom-swal-content a:hover i {
+    color: white !important;
+}
+
 .logout-btn {
     display: inline-flex;
     align-items: center;
