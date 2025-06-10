@@ -1,10 +1,17 @@
 :root {
-    --primary: #4361ee;
-    --secondary: #3f37c9;
-    --danger: #f72585;
-    --light: #f8f9fa;
-    --dark: #212529;
-    --success: #4cc9f0;
+    --background-color: #f1f1f1;
+    --text-color: #000000;
+    --titre-color: grey;
+    --primary-color: #ab9ff2;
+    --secondary-color: #ffffff;
+    --border-color: #dcdcdc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --input-background: #f9f9f9;
+    --accent-color: #fad646;
+    --success-color: #3ad38b;
+    --error-color: #f56545;
+    --blue-color: #5086eb;
+    --orange-color: #f4a261;
 }
 
 * {
@@ -22,7 +29,7 @@
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     margin: 2rem;
-    background: #f5f7fa;
+    background: var(--background-color);
     color: #333;
 }
 
@@ -38,15 +45,17 @@ h2 {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background-color: grey;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border-radius: 12px;
+    animation: fadeIn 1s ease-in-out;
+    border: 1px solid #878787;
+    box-shadow: -8px 7px 0px -1px #878787;
     transition: all 0.3s ease;
 }
 
 .logout-btn:hover {
-    background-color: #d11464;
+    color: var(--error-color);
     transform: translateY(-1px);
 }
 
@@ -59,8 +68,11 @@ h2 {
 .search-box input {
     width: 100%;
     padding: 10px 15px 10px 35px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
 }
 
@@ -75,9 +87,9 @@ h2 {
 table {
     border-collapse: collapse;
     width: 100%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: -8px 7px 0px -1px #878787;
     overflow: hidden;
 }
 
@@ -89,7 +101,7 @@ td {
 }
 
 th {
-    background: #4361ee;
+    background: var(--primary-color);
     color: white;
     font-weight: 600;
     cursor: pointer;
@@ -98,7 +110,7 @@ th {
 }
 
 th:hover {
-    background: #3a56d4;
+    background: var(--blue-color);
 }
 
 th.sorted-asc::after {
@@ -119,7 +131,7 @@ tr:hover {
     background-color: #f0f4ff;
 }
 .email-link {
-    color: #4361ee;
+    color: var(--primary-color);
     text-decoration: none;
     transition: all 0.3s;
     display: inline-flex;
@@ -128,7 +140,7 @@ tr:hover {
 }
 
 .email-link:hover {
-    color: #3a56d4;
+    color: var(--blue-color);
     text-decoration: underline;
 }
 .pagination {
@@ -147,9 +159,10 @@ tr:hover {
 }
 
 .pagination button.active {
-    background: #4361ee;
+    background: var(--primary-color);
     color: white;
-    border-color: #4361ee;
+    border-color: grey;
+    box-shadow: -8px 7px 0px -1px #878787;
 }
 
 .pagination button:disabled {
@@ -163,17 +176,19 @@ tr:hover {
     width: 100%;
     max-width: 400px;
 }
-
+a {
+    text-decoration: none;
+}
 .footer a {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #666;
+    color: var(--primary-color);
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.3s;
 }
 
 .footer a:hover {
-    color: var(--primary);
+    color: var(--blue-color);
 }
