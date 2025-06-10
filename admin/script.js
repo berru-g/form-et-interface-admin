@@ -1,4 +1,3 @@
-// Fonctionnalité d'affichage des messages
 document.addEventListener('DOMContentLoaded', function () {
     // Création de la modale
     const modal = document.createElement('div');
@@ -15,12 +14,27 @@ document.addEventListener('DOMContentLoaded', function () {
     // Gestion des clics sur les lignes
     document.querySelectorAll('.message-row').forEach(row => {
         row.addEventListener('click', function (e) {
-            // Ne pas ouvrir la modale si on clique sur un lien
+            // Ne pas ouvrir si clic sur un lien
             if (e.target.tagName === 'A' || e.target.closest('a')) return;
 
+            const messageId = this.getAttribute('data-id');
+            const isRead = this.getAttribute('data-read') === '1';
             const fullMessage = this.getAttribute('data-fullmessage');
+
+            // Afficher le message
             document.querySelector('.modal-message').innerHTML = nl2br(fullMessage);
             modal.style.display = 'flex';
+
+            // Marquer comme lu si nécessaire
+            if (!isRead) {
+                markAsRead(messageId, this);
+            }
+        });
+    });
+    // Dans la partie tri des colonnes, vérifiez que les index correspondent :
+    document.querySelectorAll('th').forEach((header, index) => {
+        header.addEventListener('click', () => {
+            sortTable(index); // L'index doit correspondre à la bonne colonne
         });
     });
 
@@ -41,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function markAsRead(messageId, cellElement) {
+// Dans votre script.js
+function markAsRead(messageId, rowElement) {
     fetch('mark_as_read.php', {
         method: 'POST',
         headers: {
@@ -49,18 +64,41 @@ function markAsRead(messageId, cellElement) {
         },
         body: 'id=' + messageId
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                cellElement.setAttribute('data-read', '1');
-                document.getElementById('unreadCount').textContent = data.unread;
-
-                // Cacher le badge si plus de messages non lus
-                document.getElementById('unreadBadge').style.display =
-                    data.unread > 0 ? 'inline-flex' : 'none';
+    .then(response => {
+        if (!response.ok) throw new Error('Network error');
+        return response.text().then(text => {
+            try {
+                return JSON.parse(text);
+            } catch {
+                throw new Error('Invalid JSON: ' + text);
             }
         });
+    })
+    .then(data => {
+        console.log("Réponse du serveur:", data); // Debug
+        
+        if (data.success) {
+            // 1. Mise à jour visuelle
+            rowElement.classList.remove('unread');
+            rowElement.style.backgroundColor = 'white';
+            
+            // 2. Mise à jour compteur
+            const unreadCountElement = document.getElementById('unreadCount');
+            unreadCountElement.textContent = data.unread;
+            
+            // 3. Cache badge si 0
+            document.getElementById('unreadBadge').style.display = 
+                data.unread > 0 ? 'flex' : 'none';
+        } else {
+            console.error('Erreur serveur:', data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Erreur fetch:', error);
+    });
 }
+        
+
 
 // Fonctionnalités complètes
 document.addEventListener('DOMContentLoaded', function () {

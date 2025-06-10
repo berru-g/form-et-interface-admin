@@ -22,6 +22,7 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ]);// récupérer l'état 'is_read'
     $messages = $pdo->query("SELECT * FROM contacts ORDER BY created_at DESC")->fetchAll();
+    $unread_count = $pdo->query("SELECT COUNT(*) FROM contacts WHERE is_read = 0")->fetchColumn();
     $total_messages = count($messages);
     $messages = $pdo->query("SELECT * FROM contacts ORDER BY id DESC")->fetchAll();
 } catch (PDOException $e) {
@@ -53,10 +54,10 @@ try {
         <button id="inboxMenu" class="inbox-icon">
              <i class="fas fa-inbox"></i>
         </button>
-        Adminboard
-        <span class="notification-badge">
-        <i class="fas fa-inbox"></i>
-        <span id="totalMessages"><?= $total_messages ?></span>
+        dbd-2-bdd v.1.1
+        <span class="notification-badge" id="unreadBadge">
+            <i class="fas fa-envelope"></i>
+        <span id="unreadCount"><?= $unread_count ?></span>
         </span>
         <a class="logout-btn" href="logout.php">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -85,7 +86,10 @@ try {
 
             <?php foreach ($messages as $msg): ?>
                 
-            <tr class="message-row" data-id="<?= $msg['id'] ?>" data-fullmessage="<?= htmlspecialchars($msg['message']) ?>">
+            <tr class="message-row <?= $msg['is_read'] ? '' : 'unread' ?>" 
+                data-id="<?= $msg['id'] ?>"
+                data-read="<?= $msg['is_read'] ?>"
+                data-fullmessage="<?= htmlspecialchars($msg['message']) ?>">
                 <td><?= htmlspecialchars($msg['created_at'] ?? '') ?></td>
                 <td><?= htmlspecialchars($msg['fullname']) ?></td>
                 <td>

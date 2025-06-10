@@ -38,6 +38,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1rem;
 }
 
 /* Style de base pour le bouton menu */
@@ -359,6 +360,7 @@ td {
         backdrop-filter: blur(3px);
     }
 
+    
     .modal-content {
         background: white;
         padding: 2rem;
@@ -419,6 +421,46 @@ td {
         max-width: 120px;
     }
 }
+/* Style des messages non lus 
+.message-row.unread {
+    background-color: rgba(128, 128, 128, 0.318) !important;
+    border-left: 3px solid var(--primary-color);
+}
+
+.message-row.unread:hover {
+    background-color: rgba(171, 159, 242, 0.3) !important;
+}
+*/
+/* Badge de notifications non lues */
+.notification-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--error-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.notification-badge i {
+    margin-right: 5px;
+}
+
+.notification-badge.hidden {
+    display: none;
+}
+/* Animation pour le badge */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 0.5s ease;
+}
+
 
 /* MEDIA QUERIES TABLETTE */
 @media (min-width: 769px) and (max-width: 1024px) {
