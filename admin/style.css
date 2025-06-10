@@ -162,7 +162,7 @@ tr:hover {
     background: var(--primary-color);
     color: white;
     border-color: grey;
-    box-shadow: -8px 7px 0px -1px #878787;
+    box-shadow: -2px 2px 0px -1px #878787;
 }
 
 .pagination button:disabled {
