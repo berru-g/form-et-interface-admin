@@ -12,3 +12,8 @@ CREATE TABLE contacts (
     message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- compteur de message non luee !
+ALTER TABLE contacts ADD COLUMN is_read TINYINT(1) DEFAULT 0;
+-- Pour initialiser les anciens messages comme non lus
+UPDATE contacts SET is_read = 0 WHERE is_read IS NULL;

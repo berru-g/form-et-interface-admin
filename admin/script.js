@@ -1,3 +1,67 @@
+// Fonctionnalité d'affichage des messages
+document.addEventListener('DOMContentLoaded', function () {
+    // Création de la modale
+    const modal = document.createElement('div');
+    modal.className = 'message-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Message complet</h3>
+            <div class="modal-message"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Gestion des clics sur les lignes
+    document.querySelectorAll('.message-row').forEach(row => {
+        row.addEventListener('click', function (e) {
+            // Ne pas ouvrir la modale si on clique sur un lien
+            if (e.target.tagName === 'A' || e.target.closest('a')) return;
+
+            const fullMessage = this.getAttribute('data-fullmessage');
+            document.querySelector('.modal-message').innerHTML = nl2br(fullMessage);
+            modal.style.display = 'flex';
+        });
+    });
+
+    // Fonction pour convertir les retours à la ligne
+    function nl2br(str) {
+        return str.replace(/\n/g, '<br>');
+    }
+
+    // Fermeture de la modale
+    modal.querySelector('.close-modal').addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+
+function markAsRead(messageId, cellElement) {
+    fetch('mark_as_read.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'id=' + messageId
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                cellElement.setAttribute('data-read', '1');
+                document.getElementById('unreadCount').textContent = data.unread;
+
+                // Cacher le badge si plus de messages non lus
+                document.getElementById('unreadBadge').style.display =
+                    data.unread > 0 ? 'inline-flex' : 'none';
+            }
+        });
+}
+
 // Fonctionnalités complètes
 document.addEventListener('DOMContentLoaded', function () {
     const table = document.getElementById('messagesTable');

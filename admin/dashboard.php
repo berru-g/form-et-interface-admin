@@ -5,6 +5,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
     exit();
 }
 
+
 $host = 'localhost';
 $db = 'berru_template';
 $user = 'root';
@@ -14,10 +15,14 @@ $charset = 'utf8mb4';
 //require __DIR__.'./db_config.php'; 
 //$dsn = "mysql:host={$config['host']};dbname={$config['db']};charset={$config['charset']}";
 //$pdo = new PDO($dsn, $config['user'], $config['pass']);
+
+
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=$charset", $user, $pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    ]);
+    ]);// récupérer l'état 'is_read'
+    $messages = $pdo->query("SELECT * FROM contacts ORDER BY created_at DESC")->fetchAll();
+    $total_messages = count($messages);
     $messages = $pdo->query("SELECT * FROM contacts ORDER BY id DESC")->fetchAll();
 } catch (PDOException $e) {
     die("Erreur DB : " . $e->getMessage());
@@ -38,6 +43,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Admin - Base de données</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -47,7 +53,11 @@ try {
         <button id="inboxMenu" class="inbox-icon">
              <i class="fas fa-inbox"></i>
         </button>
-        Dashboard Admin 
+        Adminboard
+        <span class="notification-badge">
+        <i class="fas fa-inbox"></i>
+        <span id="totalMessages"><?= $total_messages ?></span>
+        </span>
         <a class="logout-btn" href="logout.php">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </a>
@@ -74,7 +84,8 @@ try {
         <tbody>
 
             <?php foreach ($messages as $msg): ?>
-            <tr>
+                
+            <tr class="message-row" data-id="<?= $msg['id'] ?>" data-fullmessage="<?= htmlspecialchars($msg['message']) ?>">
                 <td><?= htmlspecialchars($msg['created_at'] ?? '') ?></td>
                 <td><?= htmlspecialchars($msg['fullname']) ?></td>
                 <td>
