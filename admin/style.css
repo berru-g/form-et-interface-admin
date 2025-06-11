@@ -351,6 +351,7 @@ td {
         position: fixed;
         top: 0;
         left: 0;
+        margin-bottom: 10rem;
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.7);
@@ -360,7 +361,7 @@ td {
         backdrop-filter: blur(3px);
     }
 
-    
+
     .modal-content {
         background: white;
         padding: 2rem;
@@ -372,6 +373,25 @@ td {
         position: relative;
         box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
         border: 1px solid var(--primary-color);
+    }
+
+    .modal-meta {
+        margin: 10px 0;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .reply-btn {
+        margin-top: 15px;
+        padding: 8px 15px;
+        background: var(--blue-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .reply-btn:hover {
+        background: #45a049;
     }
 
     /* Badge de notification */
@@ -421,6 +441,7 @@ td {
         max-width: 120px;
     }
 }
+
 /* Style des messages non lus 
 .message-row.unread {
     background-color: rgba(128, 128, 128, 0.318) !important;
@@ -450,11 +471,20 @@ td {
 .notification-badge.hidden {
     display: none;
 }
+
 /* Animation pour le badge */
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .pulse {
@@ -504,4 +534,66 @@ td {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.dashboard-header {
+    position: sticky;
+    top: 0;
+    background: var(--secondary-color);
+    color: var(--blue-color);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.dashboard-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.data-card {
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-around;
+    padding: 0.8rem 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 5px var(--shadow-color);
+}
+
+.bottom-nav a {
+    color: var(--text-color);
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-nav a:hover {
+    color: var(--primary-color);
 }

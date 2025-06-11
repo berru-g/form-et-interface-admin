@@ -1,35 +1,47 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Création de la modale
+    // Création de la modale (MODIFIÉ)
     const modal = document.createElement('div');
     modal.className = 'message-modal';
     modal.innerHTML = `
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h3>Message complet</h3>
+            <div class="modal-meta">
+                <div class="modal-id">ID: <span id="message-id"></span></div>
+                <div class="modal-email">Expéditeur: <span id="message-email"></span></div>
+            </div>
             <div class="modal-message"></div>
+            <button class="reply-btn">Répondre</button>
         </div>
     `;
     document.body.appendChild(modal);
 
-    // Gestion des clics sur les lignes
+    // Gestion des clics sur les lignes (MODIFIÉ)
     document.querySelectorAll('.message-row').forEach(row => {
         row.addEventListener('click', function (e) {
-            // Ne pas ouvrir si clic sur un lien
             if (e.target.tagName === 'A' || e.target.closest('a')) return;
 
             const messageId = this.getAttribute('data-id');
             const isRead = this.getAttribute('data-read') === '1';
             const fullMessage = this.getAttribute('data-fullmessage');
+            const senderEmail = this.getAttribute('email'); // Nouveau: récupère l'email
 
-            // Afficher le message
+            // Afficher le message + metadata (MODIFIÉ)
             document.querySelector('.modal-message').innerHTML = nl2br(fullMessage);
+            document.getElementById('message-id').textContent = messageId;
+            document.getElementById('message-email').textContent = senderEmail;
             modal.style.display = 'flex';
 
-            // Marquer comme lu si nécessaire
             if (!isRead) {
                 markAsRead(messageId, this);
             }
         });
+    });
+
+    // Gestion du bouton Répondre (NOUVEAU)
+    modal.querySelector('.reply-btn').addEventListener('click', function () {
+        const email = document.getElementById('message-email').textContent;
+        window.location.href = `mailto:${email}?subject=Re: Votre message`;
     });
     // Dans la partie tri des colonnes, vérifiez que les index correspondent :
     document.querySelectorAll('th').forEach((header, index) => {
@@ -64,40 +76,40 @@ function markAsRead(messageId, rowElement) {
         },
         body: 'id=' + messageId
     })
-    .then(response => {
-        if (!response.ok) throw new Error('Network error');
-        return response.text().then(text => {
-            try {
-                return JSON.parse(text);
-            } catch {
-                throw new Error('Invalid JSON: ' + text);
+        .then(response => {
+            if (!response.ok) throw new Error('Network error');
+            return response.text().then(text => {
+                try {
+                    return JSON.parse(text);
+                } catch {
+                    throw new Error('Invalid JSON: ' + text);
+                }
+            });
+        })
+        .then(data => {
+            console.log("Réponse du serveur:", data); // Debug
+
+            if (data.success) {
+                // 1. Mise à jour visuelle
+                rowElement.classList.remove('unread');
+                rowElement.style.backgroundColor = 'white';
+
+                // 2. Mise à jour compteur
+                const unreadCountElement = document.getElementById('unreadCount');
+                unreadCountElement.textContent = data.unread;
+
+                // 3. Cache badge si 0
+                document.getElementById('unreadBadge').style.display =
+                    data.unread > 0 ? 'flex' : 'none';
+            } else {
+                console.error('Erreur serveur:', data.error);
             }
+        })
+        .catch(error => {
+            console.error('Erreur fetch:', error);
         });
-    })
-    .then(data => {
-        console.log("Réponse du serveur:", data); // Debug
-        
-        if (data.success) {
-            // 1. Mise à jour visuelle
-            rowElement.classList.remove('unread');
-            rowElement.style.backgroundColor = 'white';
-            
-            // 2. Mise à jour compteur
-            const unreadCountElement = document.getElementById('unreadCount');
-            unreadCountElement.textContent = data.unread;
-            
-            // 3. Cache badge si 0
-            document.getElementById('unreadBadge').style.display = 
-                data.unread > 0 ? 'flex' : 'none';
-        } else {
-            console.error('Erreur serveur:', data.error);
-        }
-    })
-    .catch(error => {
-        console.error('Erreur fetch:', error);
-    });
 }
-        
+
 
 
 // Fonctionnalités complètes
