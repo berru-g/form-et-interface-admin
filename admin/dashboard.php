@@ -5,7 +5,6 @@ if (!isset($_SESSION['admin_logged_in'])) {
     exit();
 }
 
-
 $host = 'localhost';
 $db = 'berru_template';
 $user = 'root';
@@ -52,16 +51,23 @@ try {
 <body>
     <h2>
         <button id="inboxMenu" class="inbox-icon">
-             <i class="fas fa-inbox"></i>
+             <!--<i class="fas fa-inbox"></i>-->
+             <i class="fas fa-database"></i>
         </button>
-        dbd-2-bdd v.1.1
-        <span class="notification-badge" id="unreadBadge">
+        dbd bdd v.1.1
+        <button id="importJsonBtn" class="download-btn" title="importer une bdd">
+            <i class="fa-solid fa-file-import"></i>
+        </button>
+        <button id="exportJsonBtn" class="download-btn" title="exorter la bdd">
+            <i class="fa-solid fa-file-export"></i> 
+        </button>
+        <span class="notification-badge" id="unreadBadge" title="Messages non lue">
             <i class="fas fa-envelope"></i>
         <span id="unreadCount"><?= $unread_count ?></span>
         </span>
-        <a class="logout-btn" href="logout.php">
+        <span><a class="logout-btn" href="logout.php" title="Se déconnecter">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </a>
+            </a></span>
     </h2>
     
     <div class="search-box">

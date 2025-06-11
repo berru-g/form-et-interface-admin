@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Dans votre script.js
+// markasread
 function markAsRead(messageId, rowElement) {
     fetch('mark_as_read.php', {
         method: 'POST',
@@ -238,4 +238,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialisation
     updatePagination();
+});
+
+// exportation de la bdd en json
+document.getElementById('exportJsonBtn').addEventListener('click', async () => {
+    try {
+        // 1. Afficher un loader
+        const btn = document.getElementById('exportJsonBtn');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération...';
+        btn.disabled = true;
+
+        // 2. Récupérer les données
+        const response = await fetch('export_to_json.php');
+        const data = await response.json();
+        
+        // 3. Créer et déclencher le téléchargement
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `export_${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        
+        // 4. Nettoyage
+        setTimeout(() => {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            // Remettre le bouton normal
+            btn.innerHTML = '<i class="fas fa-database"></i> Exporter en JSON';
+            btn.disabled = false;
+        }, 100);
+
+    } catch (error) {
+        console.error('Erreur export:', error);
+        alert('Erreur lors de l\'export');
+    }
 });
