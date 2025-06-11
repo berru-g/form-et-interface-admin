@@ -142,10 +142,10 @@ try {
                 html: `
     <ul>
         <li><a href="#"><i class="fas fa-database"></i> SQL 1</a></li>
-        <li><a href="#"><i class="fas fa-table"></i> SQL 2</a></li>
-        <li><a href="#"><i class="fas fa-server"></i> SQL 3</a></li>
-        <li><a href="#"><i class="fas fa-code"></i> SQL 4</a></li>
-        <li><a href="#"><i class="fas fa-chart-line"></i> SQL 5</a></li>
+        <li><a href="#"><i class="fas fa-database"></i> SQL 2</a></li>
+        <li><a href="#"><i class="fas fa-database"></i> SQL 3</a></li>
+        <li><a href="#"><i class="fas fa-database"></i> SQL 4</a></li>
+        <li><a href="./php-generate-hash.php"> Generate hash</a></li>
         <li><a href="#"><i class="fas fa-headset"></i> Assistance</a></li>
     </ul>
 `,
