@@ -389,13 +389,14 @@ td {
         margin-top: 15px;
         padding: 8px 15px;
         background: var(--blue-color);
+        border-radius:8px;
         color: white;
         border: none;
         cursor: pointer;
     }
 
     .reply-btn:hover {
-        background: #45a049;
+        background: grey;
     }
 
     /* Badge de notification */
@@ -613,13 +614,13 @@ td {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: var(--secondary-color);
-    border-top: 1px solid var(--border-color);
+    background-color: hsla(0, 0%, 100%, 0.145);
+
     display: flex;
     justify-content: space-around;
     padding: 0.8rem 0;
     z-index: 1000;
-    box-shadow: 0 -2px 5px var(--shadow-color);
+    
 }
 
 .bottom-nav a {

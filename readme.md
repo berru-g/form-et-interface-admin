@@ -1,4 +1,4 @@
-# Apprentissage PHP + SQL sécurisé
+# Contacts PHP + SQL sécurisé
 
         - Template de juin 2025 : Formulaire + bdd SQL + Interface Admin
 

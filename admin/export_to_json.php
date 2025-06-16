@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db_config.php'; // Adaptez le chemin
+require_once './db_config.php'; // Adaptez le chemin
 
 header('Content-Type: application/json');
 
