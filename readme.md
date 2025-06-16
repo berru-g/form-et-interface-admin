@@ -1,13 +1,13 @@
 # Apprentissage PHP + SQL sécurisé
 
-        - Dossier me servant de template fait pour Golden-dessert ( juin 2025 )
+        - Template de juin 2025 : Formulaire + bdd SQL + Interface Admin
 
 ## Formulaire de contact
 
         - ✅ 6 input de renseignement (mail, nom, statut, siteweb, numéro, message)
-        - ✅ redirection client
+        - ✅ redirection user
         - ✅ enregistrement dans bdd SQL
-        - ⚠️ n'envoie pas les info sur mail client directement
+        - ⚠️ Vérifier l'envoie de mail auto au client en plus de l'enregistrement dans la bdd
 
 
 ## Interface admin
@@ -18,6 +18,8 @@
         - ✅ Réponse par mail via lien
         - ✅ mdp hashé
         - ⚠️ mdp bdd en clair ( à finir ou config dans hébergeur)
+        - ⚠️ Features (Export / import de bdd, alert de mess reçu) non fonctionnel !
+        - ⚙️ Ajouter "créer une facture à partir du mail reçu".
 
 
 #### Bonne base de travail à revoir niveau sécurité (testé via SQLMap)
