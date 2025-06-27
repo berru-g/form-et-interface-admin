@@ -28,5 +28,8 @@
 
 <img width="960" alt="dev (4)" src="https://github.com/user-attachments/assets/015d676d-e676-43a1-a087-53aabbda9547" />
 
+## Facturation (personnalisable)
+<img width="960" alt="dev (5)" src="https://github.com/user-attachments/assets/011da7e3-733e-4fab-b17b-4b0740630a8a" />
+
 
 #### Bonne base de travail à revoir niveau sécurité (testé via SQLMap)
