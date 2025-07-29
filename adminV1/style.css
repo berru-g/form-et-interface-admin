@@ -135,22 +135,26 @@ h2 {
 }
 
 .logout-btn {
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--background-color);
-    color: var(--primary-color);
-    border-radius: 12px;
-    animation: fadeIn 1s ease-in-out;
-    border: 1px solid #878787;
-    box-shadow: -8px 7px 0px -1px #878787;
-    transition: all 0.3s ease;
+    gap: 8px;
+    font-size: 14px;
+    transition: all 0.3s;
+    margin-left: 10px;
+    box-shadow: 0 4px 8px rgba(159, 159, 159, 0.3);
 }
 
 .logout-btn:hover {
-    color: var(--error-color);
-    transform: translateY(-1px);
+    background-color: grey;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(159, 159, 159, 0.3);
 }
 
 .search-box {
@@ -361,7 +365,7 @@ td {
         backdrop-filter: blur(3px);
     }
 
-    
+
     .modal-content {
         background: white;
         padding: 2rem;
@@ -373,6 +377,26 @@ td {
         position: relative;
         box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
         border: 1px solid var(--primary-color);
+    }
+
+    .modal-meta {
+        margin: 10px 0;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .reply-btn {
+        margin-top: 15px;
+        padding: 8px 15px;
+        background: var(--blue-color);
+        border-radius:8px;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .reply-btn:hover {
+        background: grey;
     }
 
     /* Badge de notification */
@@ -422,6 +446,7 @@ td {
         max-width: 120px;
     }
 }
+
 /* Style des messages non lus 
 .message-row.unread {
     background-color: rgba(128, 128, 128, 0.318) !important;
@@ -432,30 +457,73 @@ td {
     background-color: rgba(171, 159, 242, 0.3) !important;
 }
 */
-/* Badge de notifications non lues */
-.notification-badge {
+.download-btn {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
-    background: var(--error-color);
-    color: white;
-    padding: 3px 8px;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    gap: 8px;
+    font-size: 12px;
+    transition: all 0.3s;
     margin-left: 10px;
+}
+
+.download-btn:hover {
+    background-color: #2dbd7d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(61, 211, 139, 0.3);
+}
+
+.download-btn i {
+    font-size: 16px;
+}
+/* Badge de notifications non lues */
+.notification-badge {
+    background-color: var(--orange-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    transition: all 0.3s;
+    margin-left: 10px;
+}
+.notification-badge:hover {
+    background-color: #c6854f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(211, 143, 61, 0.3);
 }
 
 .notification-badge i {
     margin-right: 5px;
+    font-size: 16px;
 }
 
 .notification-badge.hidden {
     display: none;
 }
+
 /* Animation pour le badge */
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .pulse {
@@ -490,7 +558,7 @@ td {
 
     .inbox-icon,
     .logout-btn i {
-        font-size: 1.2rem;
+        font-size: 16px;
     }
 }
 
@@ -546,13 +614,22 @@ td {
     position: fixed;
     bottom: 0;
     width: 100%;
+<<<<<<< HEAD:adminV1/style.css
     background-color: var(--secondary-color);
     border-top: 1px solid var(--border-color);
+=======
+    background-color: hsla(0, 0%, 100%, 0.145);
+
+>>>>>>> 3b4bf2e1c22ecb3ed651d662493d7702ca6f5d86:admin/style.css
     display: flex;
     justify-content: space-around;
     padding: 0.8rem 0;
     z-index: 1000;
+<<<<<<< HEAD:adminV1/style.css
     box-shadow: 0 -2px 5px var(--shadow-color);
+=======
+    
+>>>>>>> 3b4bf2e1c22ecb3ed651d662493d7702ca6f5d86:admin/style.css
 }
 
 .bottom-nav a {
@@ -567,4 +644,8 @@ td {
 
 .bottom-nav a:hover {
     color: var(--primary-color);
+<<<<<<< HEAD:adminV1/style.css
 }
+=======
+}
+>>>>>>> 3b4bf2e1c22ecb3ed651d662493d7702ca6f5d86:admin/style.css

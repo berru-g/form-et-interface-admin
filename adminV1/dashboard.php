@@ -5,7 +5,6 @@ if (!isset($_SESSION['admin_logged_in'])) {
     exit();
 }
 
-
 $host = 'localhost';
 $db = 'berru_template';
 $user = 'root';
@@ -45,6 +44,14 @@ try {
     <meta charset="UTF-8">
     <title>Admin - Base de données</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../logobdd.png" />
+    <link rel="apple-touch-icon" href="../logobdd.png" />
+    <meta name="description"
+        content="Interface admin pour gérer la base de données client de son site.">
+    <meta name="keywords"
+        content="interface admin, outils de gestion de base de donnée, formulaire et interface administrateur,">
+    <meta name="author" content="Gael Berru.">
+    <meta name="robots" content="noai">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -52,16 +59,23 @@ try {
 <body>
     <h2>
         <button id="inboxMenu" class="inbox-icon">
-             <i class="fas fa-inbox"></i>
+             <!--<i class="fas fa-inbox"></i>-->
+             <i class="fas fa-database"></i>
         </button>
-        dbd-2-bdd v.1.1
-        <span class="notification-badge" id="unreadBadge">
+        SQL Admin
+        <button id="importJsonBtn" class="download-btn" title="importer une bdd">
+            <i class="fa-solid fa-file-import"></i>
+        </button>
+        <button id="exportJsonBtn" class="download-btn" title="exorter la bdd">
+            <i class="fa-solid fa-file-export"></i> 
+        </button>
+        <span class="notification-badge" id="unreadBadge" title="Messages non lue">
             <i class="fas fa-envelope"></i>
         <span id="unreadCount"><?= $unread_count ?></span>
         </span>
-        <a class="logout-btn" href="logout.php">
+        <span><a class="logout-btn" href="logout.php" title="Se déconnecter">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </a>
+            </a></span>
     </h2>
     
     <div class="search-box">
@@ -114,8 +128,8 @@ try {
     </div>
     <br>
     <div class="footer">
-        <a href="https://gael-berru.netlify.app#contact" rel="noopener" target="_blank">
-            <span>Interface développée par berru-g | Contacter l'assistance</span>
+        <a href="https://gael-berru.netlify.app#formulaire" rel="noopener" target="_blank">
+            <span>v.1.1 développée par berru-g | Contacter l'assistance</span>
             <i class="fas fa-headset"></i>
         </a>
     </div>
@@ -126,32 +140,35 @@ try {
         <a href="index.php"><i class="fas fa-arrow-left"></i><span>Retour</span></a>
     </nav>-->
     <script>
-        // MENU via lib sweetalert2
-        const hamburgerMenu = document.querySelector('.inbox-icon');
+       const hamburgerMenu = document.querySelector('.inbox-icon');
 
-        hamburgerMenu.addEventListener('click', () => {
-            // Utilisation de SweetAlert pour afficher la fenêtre contextuelle
-            Swal.fire({
-                title: '<span style="color:cornflowerblue;"><a href="#">BDD</a></span>',
-                html: `
-    <ul>
-        <li><a href="#"><i class="fas fa-database"></i> SQL 1</a></li>
-        <li><a href="#"><i class="fas fa-table"></i> SQL 2</a></li>
-        <li><a href="#"><i class="fas fa-server"></i> SQL 3</a></li>
-        <li><a href="#"><i class="fas fa-code"></i> SQL 4</a></li>
-        <li><a href="#"><i class="fas fa-chart-line"></i> SQL 5</a></li>
-        <li><a href="#"><i class="fas fa-headset"></i> Assistance</a></li>
-    </ul>
-`,
-                showCloseButton: true,
-                showConfirmButton: false,
-                customClass: {
-                    popup: 'custom-swal-popup',
-                    closeButton: 'custom-swal-close-button',
-                    content: 'custom-swal-content',
-                }
-            });
-        });
+hamburgerMenu.addEventListener('click', () => {
+  Swal.fire({
+    title: '<h3 style="color:#ab9ff2; font-weight:600; margin-bottom: 1rem;">🎛️ Menu rapide</h3>',
+    html: `
+      <div style="display: flex; flex-direction: column; gap: 12px; font-size: 1rem;">
+        <a href="./facture.html" style="padding: 10px 16px; background: #ab9ff2; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background 0.3s;">
+          📑 Facture
+        </a>
+        <a href="./php-generate-hash.php" style="padding: 10px 16px; background: #ab9ff2; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background 0.3s;">
+          ✅ Generate Hash
+        </a>
+        <a href="#" style="padding: 10px 16px; background: #ab9ff2; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background 0.3s;">
+          <i class="fas fa-headset"></i> Assistance
+        </a>
+      </div>
+    `,
+    showCloseButton: true,
+    showConfirmButton: false,
+    background: '#f4f3fc',
+    customClass: {
+      popup: 'custom-swal-popup',
+      closeButton: 'custom-swal-close-button',
+      content: 'custom-swal-content',
+    }
+  });
+});
+
 </script>
     <script src="script.js"></script>
 </body>

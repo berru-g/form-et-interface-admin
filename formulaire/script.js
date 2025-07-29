@@ -1,3 +1,4 @@
+// Version pour Supabase non fonctionnel ???
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
 
 // Configuration CORRECTE avec le schéma spécifié

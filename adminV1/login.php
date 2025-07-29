@@ -54,6 +54,15 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion Admin</title>
+    <link rel="shortcut icon" href="../logobdd.png" />
+    <link rel="apple-touch-icon" href="../logobdd.png" />
+    <meta name="description"
+        content="Interface admin pour gérer la base de données client de son site.">
+    <meta name="keywords"
+        content="interface admin, outils de gestion de base de donnée, formulaire et interface administrateur,">
+    <meta name="author" content="Gael Berru.">
+    <meta name="robots" content="noai">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -98,7 +107,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         .logo {
             font-size: 3rem;
-            color: var(--primary);
+            color: var(--light);
             margin-bottom: 2rem;
             display: block;
         }
@@ -168,7 +177,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: #666;
+            color:var(--light);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s;
@@ -207,7 +216,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     
     <div class="footer">
-        <a href="https://gael-berru.netlify.app#contact" rel="noopener" target="_blank">
+        <a href="https://gael-berru.netlify.app#formulaire" rel="noopener" target="_blank">
             <span>Interface développée par berru-g</span>
             <i class="fas fa-headset"></i>
         </a>
