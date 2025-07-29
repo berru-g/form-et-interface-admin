@@ -1,6 +1,9 @@
 # Apprentissage PHP + SQL sécurisé
 
-        - Dossier me servant de template fait pour Golden-dessert ( juin 2025 )
+        - Dossier me servant de template fait pour un client ( juin 2025 )
+
+
+![Interface admin V2](image.png)
 
 ## Formulaire de contact
 

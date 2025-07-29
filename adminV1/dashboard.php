@@ -119,6 +119,12 @@ try {
             <i class="fas fa-headset"></i>
         </a>
     </div>
+    
+    <!--<nav class="bottom-nav">
+        <a href="#"><i class="fas fa-home"></i><span>Accueil</span></a>
+        <a href="#"><i class="fas fa-cog"></i><span>Configuration</span></a>
+        <a href="index.php"><i class="fas fa-arrow-left"></i><span>Retour</span></a>
+    </nav>-->
     <script>
         // MENU via lib sweetalert2
         const hamburgerMenu = document.querySelector('.inbox-icon');
